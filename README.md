@@ -1,44 +1,70 @@
-# Papa Georgio’s Pizzeria: Analytical Data Warehouse Design
+# Papa Georgio’s Pizzeria: Data Warehouse Project
 
-## 1. Project Overview
-This project involves designing a comprehensive dimensional model for **Papa Georgio’s Pizzeria**, a nationwide franchise operating across multiple locations and sales channels. The goal is to build a centralized analytical data warehouse that enables leadership to perform strategic, operational, and customer-focused analyses.
+## Overview
+This project designs a **Galaxy Schema** data warehouse for Papa Georgio’s Pizzeria.  
+The system supports analysis of sales, customers, promotions, and operations across all locations.
 
----
-
-## 2. Business Analysis Use Cases
-The model is engineered to support the following business processes:
-
-- **Sales Performance:** Analyzing total revenue and quantity sold by store, region, and channel.  
-- **Customer Behavior:** Identifying high-revenue groups, loyalty tier profitability, and demographic responses.  
-- **Promotion Effectiveness:** Evaluating how holiday promotions and localized coupons affect revenue and volume.  
-- **Operational Efficiency:** Tracking order fulfillment times from placement to delivery and monitoring employee productivity.  
+To enable parallel development, the project is divided into independent modules that connect through **shared (conformed) dimensions** such as Date, Location, and Product.
 
 ---
 
-## 3. Team Roles & Module Distribution
-To ensure a decoupled workflow, the project is split into three independent modules. Each member is responsible for their specific schema files and documentation.
+## Team Task Allocation
 
-| Student   | Module                  | Key Deliverables & Requirements |
-|-----------|------------------------|--------------------------------|
-| Student 1 | Revenue & Marketing    | Atomic Transaction Fact, Snowflake Product Hierarchy, and Promotion (Why) Dimension |
-| Student 2 | Fulfillment & CRM      | Accumulating Snapshot Fact, SCD Type 2 Customer Tracking, and Role-Playing Date Dimensions |
-| Student 3 | Operations & HR        | Periodic Snapshot Fact, SCD Type 1 Employee Dimension, and Bridge Tables for hierarchies |
+Each student owns a specific business process and fact table type.
 
----
+### Student 1 — Revenue & Marketing
+**Focus:** Sales performance and promotions  
 
-## 4. Technical Specifications
-The design adheres to the following dimensional modeling standards:
-
-- **Dimensions:** Inclusion of all "Five Ws" (Who, What, When, Where, Why).  
-- **Hierarchies:** Support for balanced/unbalanced hierarchies in Product and Location.  
-- **Measures:** Implementation of additive, semi-additive, and non-additive metrics.  
-- **Schema:** Integration of both Star and Snowflake structures.  
+- **Fact Table:** Atomic Transaction (sales)  
+- **Key Dimensions:**  
+  - Product (Snowflake hierarchy)  
+  - Promotion ("Why" dimension)  
+  - Location (Region → State → Store)  
+- **Metrics:** Revenue, Quantity Sold  
 
 ---
 
-## 5. GitHub Workflow
-To maintain independent development until the final deliverable date:
+### Student 2 — Fulfillment & CRM
+**Focus:** Order lifecycle and customer behavior  
 
-- **Branching:** Each student works on a dedicated feature branch (`feature-sales`, `feature-ops`, `feature-hr`).  
-- **Directories:** Keep SQL scripts in separate folders to avoid merge conflicts.  
-- **Integration:** Pull Requests will be merged into `main` only after local verification of the individual sub-models.  
+- **Fact Table:** Accumulating Snapshot (order process)  
+- **Key Dimensions:**  
+  - Customer (SCD Type 2)  
+  - Date (Role-playing: Order Date, Delivery Date)  
+- **Special:** Bridge table for many-to-many relationships  
+
+---
+
+### Student 3 — Operations & HR
+**Focus:** Staffing and operational efficiency  
+
+- **Fact Table:** Periodic Snapshot (daily metrics)  
+- **Key Dimensions:**  
+  - Employee (SCD Type 1)  
+  - Organization (unbalanced hierarchy)  
+- **Special:** Different grain (daily summaries vs transactions)  
+
+---
+
+## Shared Design Principles
+
+- **Galaxy Schema:** Multiple fact tables sharing dimensions  
+- **Conformed Dimensions:** Date, Product, Location  
+- **Measures:** Additive, semi-additive, and non-additive  
+- **Schemas:** Combination of Star and Snowflake designs  
+
+---
+
+## Workflow
+
+
+- Keep SQL files in separate folders  
+- Merge into `main` after testing  
+
+---
+
+## Final Deliverable
+
+- Combined SQL model (`main_model.sql`)  
+- Unified ERD diagram  
+- Fully integrated Galaxy Schema  
