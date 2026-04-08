@@ -149,48 +149,18 @@ CREATE TABLE Fact_OrderLifecycle (
     IsCancelled BIT DEFAULT 0,
     
     -- Constraints to ensure data integrity
-    CONSTRAINT FK_FactOrderLifecycle_Customer
-        FOREIGN KEY (CustomerKey) REFERENCES Dim_Customer(CustomerKey),
+    CONSTRAINT FK_FactOrderLifecycle_Customer FOREIGN KEY (CustomerKey) REFERENCES Dim_Customer(CustomerKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_LoyaltyAccount
-        FOREIGN KEY (LoyaltyAccountKey) REFERENCES Dim_LoyaltyAccount(LoyaltyAccountKey),
+    CONSTRAINT FK_FactOrderLifecycle_LoyaltyAccount FOREIGN KEY (LoyaltyAccountKey) REFERENCES Dim_LoyaltyAccount(LoyaltyAccountKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_Location
-        FOREIGN KEY (LocationKey) REFERENCES Dim_Location(LocationKey),
+    CONSTRAINT FK_FactOrderLifecycle_Location FOREIGN KEY (LocationKey) REFERENCES Dim_Location(LocationKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_OrderDate
-        FOREIGN KEY (OrderDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_FactOrderLifecycle_OrderDate FOREIGN KEY (OrderDateKey) REFERENCES Dim_Date(DateKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_PrepStartDate
-        FOREIGN KEY (PrepStartDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_FactOrderLifecycle_DeliveryDate FOREIGN KEY (DeliveryDateKey) REFERENCES Dim_Date(DateKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_ReadyDate
-        FOREIGN KEY (ReadyDateKey) REFERENCES Dim_Date(DateKey),
+    CONSTRAINT FK_FactOrderLifecycle_OrderTime FOREIGN KEY (OrderTimeKey) REFERENCES Dim_Time(TimeKey),
 
-    CONSTRAINT FK_FactOrderLifecycle_PickupDate
-        FOREIGN KEY (PickupDateKey) REFERENCES Dim_Date(DateKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_DeliveryDate
-        FOREIGN KEY (DeliveryDateKey) REFERENCES Dim_Date(DateKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_CancelDate
-        FOREIGN KEY (CancelDateKey) REFERENCES Dim_Date(DateKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_OrderTime
-        FOREIGN KEY (OrderTimeKey) REFERENCES Dim_Time(TimeKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_PrepStartTime
-        FOREIGN KEY (PrepStartTimeKey) REFERENCES Dim_Time(TimeKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_ReadyTime
-        FOREIGN KEY (ReadyTimeKey) REFERENCES Dim_Time(TimeKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_PickupTime
-        FOREIGN KEY (PickupTimeKey) REFERENCES Dim_Time(TimeKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_DeliveryTime
-        FOREIGN KEY (DeliveryTimeKey) REFERENCES Dim_Time(TimeKey),
-
-    CONSTRAINT FK_FactOrderLifecycle_CancelTime
-        FOREIGN KEY (CancelTimeKey) REFERENCES Dim_Time(TimeKey)
+    CONSTRAINT FK_FactOrderLifecycle_DeliveryTime FOREIGN KEY (DeliveryTimeKey) REFERENCES Dim_Time(TimeKey)
+    
 );
