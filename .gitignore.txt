@@ -1,9 +1,0 @@
-# Visual Studio / SSMS files
-.vs/
-*.suo
-*.user
-*.sln.docstates
-
-# Temporary files
-*.tmp
-*.log

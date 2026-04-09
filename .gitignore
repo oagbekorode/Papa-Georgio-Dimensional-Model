@@ -1,0 +1,52 @@
+# --- Operating system ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# --- Visual Studio / MSBuild ---
+.vs/
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.rsuser
+*.VC.db*
+*.VC.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.pdb
+
+# --- SQL / SSMS (local DB, backups, temp) ---
+*.mdf
+*.ldf
+*.ndf
+*.bacpac
+*.bkp
+*.trn
+
+# --- Editors & IDEs ---
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Temporary & logs ---
+*.tmp
+*.temp
+*.log
+*.bak
+*.orig
