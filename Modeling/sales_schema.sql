@@ -1,4 +1,8 @@
 /* Student:  Emmanuel 
+
+|DO NOT EDIT OR RUN|
+
+
 Sales & Marketing Module (sales_schema.sql)
 	You focus on the Who, What, Where, and Why of the core revenue process.
 
